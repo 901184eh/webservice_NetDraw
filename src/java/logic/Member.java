@@ -31,7 +31,9 @@ public class Member implements Comparable<Member> {
      * @param macAddress
      */
     public Member(String macAddress, String softwareVersion){
+        //moet voldeon aan MAC pattern.
         this.macAddress = macAddress;
+        // kan dit ook nakijken als wij dit regelen.
         this.softwareVersion = softwareVersion;
     }
     
