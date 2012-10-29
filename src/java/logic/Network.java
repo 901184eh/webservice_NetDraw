@@ -28,6 +28,22 @@ public class Network {
     
     /**
      *
+     * @param client
+     */
+    public void updateMember(Member client){
+        
+    }
+    
+    public void removeMember(Member client){
+        
+    }
+    
+    public void removeMember(String macAddress){
+        
+    }
+    
+    /**
+     *
      * @param member
      * @return
      */
