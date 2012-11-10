@@ -38,10 +38,6 @@ public class Network {
         
     }
     
-    public void removeMember(String macAddress){
-        
-    }
-    
     /**
      *
      * @param member
