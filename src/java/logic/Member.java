@@ -8,12 +8,6 @@ import java.util.regex.Pattern;
  * Represents a client connected to the network.
  */
 public class Member implements Comparable<Member> {
-    private String computerName;
-    private String accountName;
-    private final String softwareVersion;
-    private String defaultGateway;
-    private final String macAddress;
-    private String ipAddress;
     private static final Pattern IPV4_PATTERN = 
         Pattern.compile(
                 "^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
@@ -25,6 +19,14 @@ public class Member implements Comparable<Member> {
     private static final Pattern IPV6_HEX_COMPRESSED_PATTERN = 
         Pattern.compile(
                 "^((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)::((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)$");
+    
+    
+    private String computerName;
+    private String accountName;
+    private final String softwareVersion;
+    private String defaultGateway;
+    private final String macAddress;
+    private String ipAddress;
     
     /**
      *

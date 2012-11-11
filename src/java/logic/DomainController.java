@@ -42,6 +42,9 @@ public class DomainController {
         network.removeMember(member);
     }
     
+    /**
+     * Will Remove all Members that have not been updated recently.
+     */
     public void cleanNetwork(){
         //remove all Members that have not been updated "recently".
     }

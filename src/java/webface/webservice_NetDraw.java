@@ -1,10 +1,15 @@
 package webface;
 
+import exceptions.InvalidOperationException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import logic.DomainController;
+import logic.Member;
 
 /**
  *
@@ -12,6 +17,8 @@ import javax.jws.WebService;
  */
 @WebService(serviceName = "webservice_NetDraw")
 public class webservice_NetDraw {
+    
+    private static DomainController dc = new DomainController();
 
     /**
      * Web service operation
@@ -20,6 +27,7 @@ public class webservice_NetDraw {
     
     @WebMethod(operationName = "uploadData")
     public void uploadData(@WebParam(name = "name") String name) throws Exception {
+        
     }
 
     /**
@@ -29,7 +37,6 @@ public class webservice_NetDraw {
     
     @WebMethod(operationName = "getDiagram")
     public ArrayList getDiagram() {
-        //TODO write your implementation code here:
         return null;
     }
 
@@ -40,6 +47,11 @@ public class webservice_NetDraw {
     
     @WebMethod(operationName = "logOff")
     @Oneway
-    public void logOff(@WebParam(name = "name") String name) {
+    public void logOff(@WebParam(name = "name") String name){
+        try {
+            dc.removeMember(new Member("mac address", "softVer"));
+        } catch (InvalidOperationException ex) {
+            //doesn't really matter as it doesn't exist in the list.
+        }
     }
 }
