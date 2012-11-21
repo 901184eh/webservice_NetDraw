@@ -1,5 +1,6 @@
 package logic;
 
+import java.rmi.Remote;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +8,7 @@ import java.util.Set;
  *
  * @author Edwin Hurst
  */
-public class Network {
+public class Network implements Remote {
     
     private Set<Member> members;
     private int expiryTime;
