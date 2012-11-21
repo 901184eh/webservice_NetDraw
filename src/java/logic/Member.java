@@ -1,6 +1,7 @@
 package logic;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.regex.Pattern;
 
 /**
@@ -33,7 +34,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @param macAddress
      */
-    public Member(String macAddress, String softwareVersion){
+    public Member(String macAddress, String softwareVersion) throws RemoteException {
         //moet voldeon aan MAC pattern.
         this.macAddress = macAddress;
         // kan dit ook nakijken als wij dit regelen.
@@ -44,7 +45,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getMacAddress(){
+    public String getMacAddress() throws RemoteException {
         return macAddress;
     }
     
@@ -52,7 +53,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getComputerName(){
+    public String getComputerName() throws RemoteException {
         return computerName;
     }
     
@@ -60,7 +61,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getAccountName(){
+    public String getAccountName() throws RemoteException {
         return accountName;
     }
     
@@ -68,7 +69,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getSoftwareVersion(){
+    public String getSoftwareVersion() throws RemoteException {
         return softwareVersion;
     }
     
@@ -76,7 +77,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getDefaultGateway(){
+    public String getDefaultGateway() throws RemoteException {
         return defaultGateway;
     }
     
@@ -84,7 +85,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @return
      */
-    public String getIPAddress(){
+    public String getIPAddress() throws RemoteException {
         return ipAddress;
     }
     
@@ -92,7 +93,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @param computerName
      */
-    public void setComputerName(String computerName){
+    public void setComputerName(String computerName) throws RemoteException {
         //Null mag niet.
         this.computerName = computerName;
     }
@@ -101,7 +102,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @param accountName
      */
-    public void setAccountName(String accountName){
+    public void setAccountName(String accountName) throws RemoteException {
         //Null mag niet.
         this.accountName = accountName;
     }
@@ -110,7 +111,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @param defaultGateway
      */
-    public void setDefaultGateway(String defaultGateway){
+    public void setDefaultGateway(String defaultGateway) throws RemoteException {
         //address moet voldoen aan IPv4/6 patroon. Null mag well.
         if(isIPv4Address(defaultGateway) || isIPv6Address(defaultGateway) || (defaultGateway == null) || defaultGateway.isEmpty()){
             this.defaultGateway = defaultGateway;
@@ -123,7 +124,7 @@ public class Member implements Comparable<Member>, Remote {
      *
      * @param ipAddress
      */
-    public void setIPAddress(String ipAddress){
+    public void setIPAddress(String ipAddress) throws RemoteException {
         //address moet voldoen aan IP patroon (ofwel v4 of v6). Null mag niet.
         if(isIPv4Address(ipAddress) || isIPv6Address(ipAddress)){
             this.ipAddress = ipAddress;

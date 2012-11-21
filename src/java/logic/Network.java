@@ -1,6 +1,7 @@
 package logic;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class Network implements Remote {
     /**
      * Creates an empty Network which represents a collection of Members.
      */
-    public Network(){
+    public Network() throws RemoteException {
         members = new HashSet<Member>();
         expiryTime = 30000;
     }
@@ -26,7 +27,7 @@ public class Network implements Remote {
      * as HashSet doesn't allow duplicates. 
      * @param client
      */
-    public void addMember(Member client){
+    public void addMember(Member client) throws RemoteException {
         members.add(client);
     }
     
@@ -34,7 +35,7 @@ public class Network implements Remote {
      * Replaces a member with the newest version (or adds it to the Network)
      * @param client
      */
-    public void updateMember(Member client){
+    public void updateMember(Member client) throws RemoteException {
         removeMember(client);
         addMember(client);
     }
@@ -43,7 +44,7 @@ public class Network implements Remote {
      * Removes a Member (if present) from the Network.
      * @param client
      */
-    public void removeMember(Member client){
+    public void removeMember(Member client) throws RemoteException {
         members.remove(client);
     }
     
@@ -52,7 +53,7 @@ public class Network implements Remote {
      * @param member
      * @return true when the Member is a part of the Network. False otherwise.
      */
-    public boolean hasMember(Member member){
+    public boolean hasMember(Member member) throws RemoteException {
         return members.contains(member);
     }
     
@@ -60,7 +61,7 @@ public class Network implements Remote {
      * Sets the time after which a Member will be removed (during the next cleanup)
      * @param timeOut The time in milliseconds after which a member must update.
      */
-    public void setExpiryTime(int timeOut){
+    public void setExpiryTime(int timeOut) throws RemoteException {
         expiryTime = timeOut;
     }
 }

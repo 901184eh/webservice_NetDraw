@@ -1,6 +1,7 @@
 package webface;
 
 import exceptions.InvalidOperationException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,8 +47,7 @@ public class webservice_NetDraw {
      */
     
     @WebMethod(operationName = "logOff")
-    @Oneway
-    public void logOff(@WebParam(name = "name") String name){
+    public void logOff(@WebParam(name = "name") String name) throws RemoteException{
         try {
             dc.removeMember(new Member("mac address", "softVer"));
         } catch (InvalidOperationException ex) {

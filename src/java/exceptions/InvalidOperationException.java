@@ -1,10 +1,12 @@
 package exceptions;
 
+import java.rmi.RemoteException;
+
 /**
  *
  * @author Edwin Hurst
  */
-public class InvalidOperationException extends Exception {
+public class InvalidOperationException extends RemoteException {
     
     private String message;
     
