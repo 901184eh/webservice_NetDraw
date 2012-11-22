@@ -19,7 +19,16 @@ import logic.Member;
 @WebService(serviceName = "webservice_NetDraw")
 public class webservice_NetDraw {
     
-    private static DomainController dc = new DomainController();
+    private static DomainController dc;
+    
+    public webservice_NetDraw()
+    {
+        try {
+            dc = new DomainController();
+        } catch (RemoteException ex) {
+            Logger.getLogger(webservice_NetDraw.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * Web service operation

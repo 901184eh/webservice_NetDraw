@@ -2,6 +2,8 @@ package logic;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -140,7 +142,14 @@ public class Member implements Comparable<Member>, Remote {
      */
     @Override
     public int compareTo(Member t) {
-        return macAddress.compareTo(t.getMacAddress());
+        try {
+            return macAddress.compareTo(t.getMacAddress());
+        } catch (RemoteException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //TODO: aanpassen
+        return 0;
     }
     
     /**
@@ -154,7 +163,13 @@ public class Member implements Comparable<Member>, Remote {
             return false;
         }
         Member m = (Member) t;
-        return macAddress.equals(m.getMacAddress());
+        try {
+            return macAddress.equals(m.getMacAddress());
+        } catch (RemoteException ex) {
+            Logger.getLogger(Member.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //TODO: aanpassen
+        return false;
     }
 
     /**
