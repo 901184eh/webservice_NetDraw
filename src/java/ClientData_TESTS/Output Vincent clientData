@@ -1,0 +1,19 @@
+PcLogName irLappyLIN
+PcLogName []
+NetworkInterface java.net.NetworkInterface$1@49b3d1e5
+NetworkInterface NetCard name:wlan0 (wlan0)
+NetCard Name java.net.NetworkInterface$1checkedAddresses@700de5f5
+NetworkInterface NetCard name:lo (lo)
+NetCard Name java.net.NetworkInterface$1checkedAddresses@3cba4539
+PcLogUser : vincent
+WinUser : vincent
+WinDsn : null
+WinUserName : null
+WinPath : null
+ComputerName : null
+PcInfo : null
+
+// Zoals je ziet is dit nog niet bepaald generisch;
+// Het is mij ook opgevallen dat enkel de networkinterfaces die effectief
+// een ip hebben enkel in de lijst van networkinterfaces komen.
+// eth0 was ook actief, maar had geen ip
