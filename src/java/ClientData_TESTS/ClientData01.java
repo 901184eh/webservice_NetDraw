@@ -15,6 +15,18 @@ public class ClientData01
 
     public static void main(String[] args)
     {
+        String processorIdent = System.getenv("PROCESSOR_IDENTIFIER");
+        String processorArch = System.getenv("PROCESSOR_ARCHITECTURE");
+        String processorArchBit = System.getenv("PROCESSOR_ARCHITEW6432");
+        String processorEnvProc = System.getenv("NUMBER_OF_PROCESSORS");
+        
+        System.out.println("-------------------------------------------------");
+        System.out.println("processorIdent: " + processorIdent);
+        System.out.println("processorArch: " + processorArch);
+        System.out.println("processorArchBit: " + processorArchBit);
+        System.out.println("processorEnvProc: " + processorEnvProc);
+        System.out.println("-------------------------------------------------");
+        
         /* Total number of processors or cores available to the JVM */
         System.out.println("Available processors (cores): "
                 + Runtime.getRuntime().availableProcessors());
