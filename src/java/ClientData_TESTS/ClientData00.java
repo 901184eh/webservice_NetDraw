@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author vincent
  */
-public class ClientData {
+public class ClientData00 {
     private String PcLogName;
     private String PcLogUser;
     private String WinUser;
@@ -27,14 +27,14 @@ public class ClientData {
     private String ComputerName;
     private String PcInfo;
     
-    public ClientData()
+    public ClientData00()
     {
         getPcInfo();
     }
     
     public static void main( String[] args )
     {
-        new ClientData();
+        new ClientData00();
     }
 
     private void getPcInfo() {
