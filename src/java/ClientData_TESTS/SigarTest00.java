@@ -1,6 +1,7 @@
 package ClientData_TESTS;
 
 import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hyperic.sigar.CpuInfo;
@@ -8,6 +9,7 @@ import org.hyperic.sigar.FileSystem;
 import org.hyperic.sigar.Mem;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
+import org.hyperic.sigar.ProcState;
 
 /**
  *
@@ -23,7 +25,7 @@ public class SigarTest00
         getInformationsAboutCPU();
         getInformationsAboutMemory();
         getInformationsAboutFileSystem();
-        
+
         getSystemProcesses();
     }
 
@@ -125,20 +127,58 @@ public class SigarTest00
     public static void getSystemProcesses()
     {
         Map runningProcesses = null;
-        String pmn = "";
+        //String pmn = null;
+        long[] procLijst = null;
+        long procId = 0;
+
         try
         {
             runningProcesses = sigar.getProcStat().toMap();
+            //pmn = sigar.getProcState("State.Name.eq=vpnc").toString();
+            procLijst = sigar.getProcList();
         }
         catch (SigarException ex)
         {
             Logger.getLogger(SigarTest00.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         System.out.println("******************************************");
         System.out.println("*** Information about system processes:***");
         System.out.println("******************************************");
 
         System.out.println("Running processes: " + runningProcesses.toString());
+
+        //System.out.println("Running processes(vpnc): " + pmn);
+
+        System.out.println("Processlist: ");
+        for (long proc : procLijst)
+        {
+            try
+            {
+                System.out.println(proc + " - " + sigar.getProcState(proc).getName());
+            }
+            catch (SigarException ex)
+            {
+                Logger.getLogger(SigarTest00.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        System.out.print( "Get process details (pid): " );
+        try
+        {
+             ProcState processState = sigar.getProcState("Pid.Pid.eq=" + ( new Scanner( System.in ) ).nextLong());
+             System.out.println("Process name: " + processState.getName());
+             System.out.println("Process Nice: " + processState.getNice());
+             System.out.println("Process Priority: " + processState.getPriority());
+             System.out.println("Process processor where it last ran: " + processState.getProcessor());
+             System.out.println("Process status: " + processState.getState());
+             System.out.println("Process Threads: " + processState.getThreads());
+             System.out.println("Process screen-device: " + processState.getTty());
+             System.out.println("All process data: " + processState.toString());
+        }
+        catch (SigarException ex)
+        {
+            Logger.getLogger(SigarTest00.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
